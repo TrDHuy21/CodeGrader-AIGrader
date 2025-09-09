@@ -9,7 +9,6 @@ namespace Domain.Model
 {
     public class EvaluationCriteria
     {
-        [Description("")]
         public string Algorithm { get; set; }
 
         public string CleanCode { get; set; }

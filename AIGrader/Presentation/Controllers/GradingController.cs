@@ -15,10 +15,17 @@ namespace Presentation.Controllers
             _graderService = graderService;
         }
 
+        //[HttpPost("grading")]
+        //public async Task<IActionResult> Grading(string assignment, IFormFile formFile)
+        //{
+        //    var result = await _graderService.Grade(assignment, formFile);
+        //    return Ok(result);
+        //}
+
         [HttpPost]
-        public async Task<IActionResult> Grading(string assignment, IFormFile formFile)
+        public async Task<IActionResult> Grading(string assignment, List<IFormFile> formFiles)
         {
-            var result = await _graderService.Grade(assignment, formFile);
+            var result = await _graderService.Grade(assignment, files: formFiles);
             return Ok(result);
         }
     }
