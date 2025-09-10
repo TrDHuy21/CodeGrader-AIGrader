@@ -1,4 +1,5 @@
 ﻿using Application.Service.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,6 +27,14 @@ namespace Presentation.Controllers
         public async Task<IActionResult> Grading(string assignment, List<IFormFile> formFiles)
         {
             var result = await _graderService.Grade(assignment, files: formFiles);
+            return Ok(result);
+        }
+
+        [HttpPost("{problemId}")]
+        [Authorize]
+        public async Task<IActionResult> Grading(int problemId ,string assignment, List<IFormFile> formFiles)
+        {
+            var result = await _graderService.Grade(assignment, problemId ,files: formFiles);
             return Ok(result);
         }
     }

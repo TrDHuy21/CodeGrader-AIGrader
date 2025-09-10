@@ -12,5 +12,6 @@ namespace Application.Service.Interface
     public interface IGraderService
     {
         public Task<Result<GradedResult>> Grade(string assignment, IFormFile? file = null, List<IFormFile>? files = null);
+        public Task<Result<GradedResult>> Grade(string assignment, int problemId, IFormFile? file = null, List<IFormFile>? files = null);
     }
 }
